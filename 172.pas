@@ -1,0 +1,2 @@
+##
+print(readbiginteger mod readbiginteger)

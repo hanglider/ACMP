@@ -1,0 +1,2 @@
+##
+print(readlnbiginteger*readbiginteger)
