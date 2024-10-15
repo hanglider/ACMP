@@ -1,5 +1,5 @@
 # ACMP
 
-Solved tasks from [acmp](acmp.ru) this is our digital heritage, we don't claim anything.
+Solved tasks from [acmp](https://acmp.ru/index.asp?main=tasks) this is our digital heritage, we don't claim anything.
 
 There are currently 206 tasks here
