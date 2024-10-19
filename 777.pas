@@ -1,0 +1,1 @@
+var s,t:integer; begin read(s,t); if s>t then write(12-s+t) else write(t-s); end.
