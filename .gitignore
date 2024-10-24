@@ -33,3 +33,4 @@
 
 # Игнорировать файлы конфигурации Obsidian
 .obsidian/
+.vscode
