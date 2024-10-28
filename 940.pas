@@ -1,0 +1,1 @@
+var k:integer;s:string;begin read(k,s);for var i:=1 to 80 do if s[1]=' ' then delete(s,1,1); delete(s,k,1);Print(s)end.
