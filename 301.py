@@ -1,0 +1,5 @@
+s, k = map(int, open('input.txt').read().split())
+f = lambda x: "".join(str(min(9, max(0, x - 9 * i))) for i in range(k))
+n = list(f(s - 1)[::-1])
+n[0] = str(int(n[0]) + 1)
+print(f(s), "".join(n))
