@@ -1,0 +1,1 @@
+print(sum(map(int, open('input.txt').read().split())) // 27)
