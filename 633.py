@@ -1,2 +1,2 @@
-t = open('input.txt').read().splitlines()
-print(t[0] + ': ' + ', '.join(sorted(t[1:4])))
+t, *s = open(0).read().splitlines()
+print(t + ":", ", ".join(sorted(s[:3])))
