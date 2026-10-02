@@ -1,0 +1,6 @@
+n, m, *d = map(int, open(0).read().split())
+t = list(zip(*[iter(d)] * 3))
+s = sorted(x for _, x, _ in t[:n] if x)
+r = sorted([i for i, x, _ in t[n:] if x] + [i for i, x, _ in t[:n] if x and (x == s[-1] or x > s[-(len(s) // 2)])])
+print(len(r))
+print(*r)
