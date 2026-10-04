@@ -1,0 +1,1 @@
+print(sum(c.isalpha() and sum(map(int, str(ord(c.lower()) - 96))) + 10 * c.isupper() or c.isdigit() and 13 - int(c) or int("457233333118888880"[" .;,=+-'\"()[]{}<>".find(c)]) for c in open(0).read()))
