@@ -4,7 +4,7 @@
 Usage:
   python3 tools/acmp.py next                 # smallest task number > 100 without a NNN.* file
   python3 tools/acmp.py task N               # print statement text (+ image URLs)
-  python3 tools/acmp.py submit N FILE.py     # log in, submit as Python, wait for the verdict
+  python3 tools/acmp.py submit N FILE        # log in, submit (.py as Python, .cpp as GNU C++), wait for the verdict
 
 Credentials come from the environment: ACMP_LOGIN and ACMP_PASSWORD.
 Alternatively ACMP_COOKIE (a raw Cookie header of a logged-in browser) skips the login step.
@@ -105,13 +105,26 @@ def rows(n):
     return out
 
 
+def lang(n, path):
+    if path.endswith(".py"):
+        return "PY"
+    page, _ = request(f"/index.asp?main=task&id_task={n}")
+    opts = re.findall(r'<option[^>]*value=["\']?([^"\'\s>]+)["\']?[^>]*>([^<]*)', page)
+    cpp = [o for o in opts if "C++" in o[1]]
+    gnu = [o for o in cpp if "GNU" in o[1] or "G++" in o[1].upper()]
+    if path.endswith(".cpp") and (gnu or cpp):
+        return (gnu or cpp)[-1][0]
+    sys.exit("no language for " + path + "; form options: " + "; ".join(f"{v}={t.strip()}" for v, t in opts))
+
+
 def submit(n, path):
     login()
+    code = lang(n, path)
     before = max((int(r[0]) for r in rows(n)), default=0)
     src = Path(path).read_text()
     b = "----acmpcli" + str(int(time.time()))
     parts = []
-    for name, value in (("lang", "PY"), ("source", src)):
+    for name, value in (("lang", code), ("source", src)):
         parts.append(f'--{b}\r\nContent-Disposition: form-data; name="{name}"\r\n\r\n{value}\r\n')
     parts.append(f'--{b}\r\nContent-Disposition: form-data; name="fname"; filename=""\r\nContent-Type: application/octet-stream\r\n\r\n\r\n')
     parts.append(f"--{b}--\r\n")
