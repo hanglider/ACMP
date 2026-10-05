@@ -2,4 +2,4 @@
 
 Solved tasks from [acmp](https://acmp.ru/index.asp?main=tasks) this is our digital heritage, we don't claim anything.
 
-There are currently 950 tasks here
+There are currently 960 tasks here
