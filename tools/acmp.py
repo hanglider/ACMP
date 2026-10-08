@@ -146,7 +146,7 @@ def submit(n, path):
 
 def nxt():
     root = Path(__file__).resolve().parent.parent
-    have = {int(p.name.split(".")[0]) for p in root.iterdir() if re.match(r"\d{3,}\.", p.name)}
+    have = {int(p.name.split(".")[0]) for p in root.rglob("*") if p.is_file() and re.match(r"\d{3,}\.", p.name)}
     print(next(i for i in range(101, 10**4) if i not in have))
 
 
