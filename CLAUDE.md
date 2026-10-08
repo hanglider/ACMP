@@ -1,6 +1,7 @@
 # ACMP solutions
 
 Solutions to acmp.ru tasks, one file per task: `NNN.py` or `NNN.cpp` (task number zero-padded to 3 digits, e.g. `056.py`).
+GitHub shows at most 1000 files per directory, so finished ranges live in subfolders (e.g. `901-1000/`); new tasks go to the root.
 Some tasks also have solutions in other languages (`.cpp`, `.pas`, `.go`).
 
 ## Solving one task (the scheduled routine does exactly this, once per run)
@@ -13,7 +14,7 @@ Some tasks also have solutions in other languages (`.cpp`, `.pas`, `.go`).
    On anything other than `Accepted`, fix and resubmit. If the tool says the submission was not registered, wait ~5 minutes (acmp drops bursts) and retry once.
 6. Commit only the accepted file to `next_tasks` with message `NNN` and push it.
 7. Batch merge: when `next_tasks` holds 10 new task files compared to `origin/main`:
-   - N = number of unique task numbers in the repo (`ls | grep -E '^[0-9]{3,}\.' | sed 's/\..*//' | sort -u | wc -l`);
+   - N = number of unique task numbers in the repo (`git ls-files | sed 's|.*/||' | grep -E '^[0-9]{3,}\.' | sed 's/\..*//' | sort -u | wc -l`);
    - update the count in `README.md` ("There are currently N tasks here"), commit;
    - push the branch as `<N>_tasks`, open a PR titled `<N>`, squash-merge it into `main` (commit message `<N>`), delete `<N>_tasks` and `next_tasks`.
 8. Reply with one line: task number and verdict.
